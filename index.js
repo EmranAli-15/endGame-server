@@ -23,7 +23,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
         try {
-                await client.connect();
+                // await client.connect();
                 // More code will be here
                 const collegeCollection = client.db("endGame").collection("colleges");
 
