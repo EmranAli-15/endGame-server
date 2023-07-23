@@ -26,6 +26,7 @@ async function run() {
                 // await client.connect();
                 // More code will be here
                 const collegeCollection = client.db("endGame").collection("colleges");
+                const researchPaperCollection = client.db("endGame").collection("researchPaper");
 
                 app.get('/allColleges', async (req, res) => {
                         const result = await collegeCollection.find().toArray();
@@ -34,9 +35,13 @@ async function run() {
 
                 app.get('/singleCollege/:id', async (req, res) => {
                         const id = req.params.id;
-                        console.log(id);
                         const query = { _id: new ObjectId(id) };
                         const result = await collegeCollection.findOne(query);
+                        res.send(result);
+                })
+                
+                app.get('/researchPaper', async (req, res) => {
+                        const result = await researchPaperCollection.find().toArray();
                         res.send(result);
                 })
 
